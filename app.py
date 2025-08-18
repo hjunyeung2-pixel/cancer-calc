@@ -26,11 +26,13 @@ from reportlab.pdfbase import pdfmetrics
 # -----------------------------
 # 폰트 등록 (맑은 고딕 예시)
 # -----------------------------
-pdfmetrics.registerFont(TTFont('MalgunGothic', r'C:\Windows\Fonts\malgun.ttf'))
-pdfmetrics.registerFont(TTFont('MalgunGothic-Bold', r'C:\Windows\Fonts\malgunbd.ttf'))
+from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
-BODY_FONT = "MalgunGothic"
-BOLD_FONT = "MalgunGothic-Bold"
+pdfmetrics.registerFont(UnicodeCIDFont('HYSMyeongJo-Medium'))   # 한국어 기본 글꼴
+pdfmetrics.registerFont(UnicodeCIDFont('HeiseiKakuGo-W5'))     # 굵은 글꼴 대체
+
+BODY_FONT = "HYSMyeongJo-Medium"
+BOLD_FONT = "HeiseiKakuGo-W5"
 
 # -----------------------------
 # 스타일 정의
@@ -502,3 +504,4 @@ if st.button("전체 계산하기"):
         file_name=f"{customer_name or '고객'}_암치료비_통합제안서.pdf",
         mime="application/pdf",
     )
+
