@@ -236,17 +236,6 @@ def save_pdf(customer_name, company_data, yearly_events, yearly_payouts, total_a
             styles['KoreanBody']
         ))
 
-    # -----------------------------
-    # CID 모드 안내
-    # -----------------------------
-    if FONT_MODE.startswith("CID-FALLBACK"):
-        story.append(Spacer(1, 15))
-        story.append(Paragraph(
-            safe_text("※ 주의: 현재 PDF는 CID 폰트 모드로 생성되어, "
-                      "인쇄 시 글자가 명조체로 출력될 수 있습니다. "
-                      "정식 인쇄용은 NanumGothic 같은 TTF 폰트를 fonts 폴더에 배치해 주세요."),
-            styles['KoreanBody']
-        ))
 
     doc.build(story)
     buffer.seek(0)
@@ -538,3 +527,4 @@ if st.button("전체 계산하기"):
         file_name=f"{customer_name or '고객'}_암치료비_통합제안서.pdf",
         mime="application/pdf",
     )
+
